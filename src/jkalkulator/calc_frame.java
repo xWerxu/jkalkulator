@@ -17,6 +17,9 @@ public class calc_frame extends javax.swing.JFrame {
     public calc_frame() {
         initComponents();
     }
+    
+    public String scr_val = "";
+    public float tmp_val = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,10 +48,10 @@ public class calc_frame extends javax.swing.JFrame {
         minus = new javax.swing.JButton();
         add = new javax.swing.JButton();
         equals = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        clearall = new javax.swing.JButton();
+        left_bracket = new javax.swing.JButton();
+        right_bracket = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,35 +193,35 @@ public class calc_frame extends javax.swing.JFrame {
             }
         });
 
-        jButton18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton18.setText("Clear");
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        clear.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        clear.setText("Clear");
+        clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                clearActionPerformed(evt);
             }
         });
 
-        jButton19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton19.setText("ClearAll");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        clearall.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        clearall.setText("ClearAll");
+        clearall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                clearallActionPerformed(evt);
             }
         });
 
-        jButton20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton20.setText("(");
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
+        left_bracket.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        left_bracket.setText("(");
+        left_bracket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
+                left_bracketActionPerformed(evt);
             }
         });
 
-        jButton21.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton21.setText(")");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        right_bracket.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        right_bracket.setText(")");
+        right_bracket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                right_bracketActionPerformed(evt);
             }
         });
 
@@ -265,10 +268,10 @@ public class calc_frame extends javax.swing.JFrame {
                                     .addComponent(minus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(clearall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(left_bracket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(right_bracket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 65, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(monitor, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,9 +304,9 @@ public class calc_frame extends javax.swing.JFrame {
                                     .addComponent(num6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(clearall, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -317,9 +320,9 @@ public class calc_frame extends javax.swing.JFrame {
                             .addComponent(comma, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(equals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(left_bracket, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(right_bracket, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(66, 66, 66))
         );
 
@@ -331,7 +334,8 @@ public class calc_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_percentActionPerformed
 
     private void num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num7ActionPerformed
-        // TODO add your handling code here:
+            scr_val += num7.getText();
+            monitor.setText(scr_val);
     }//GEN-LAST:event_num7ActionPerformed
 
     private void num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num4ActionPerformed
@@ -394,21 +398,21 @@ public class calc_frame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_equalsActionPerformed
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_clearActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void clearallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearallActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_clearallActionPerformed
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+    private void left_bracketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_left_bracketActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+    }//GEN-LAST:event_left_bracketActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    private void right_bracketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_right_bracketActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+    }//GEN-LAST:event_right_bracketActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,13 +451,12 @@ public class calc_frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton clear;
+    private javax.swing.JButton clearall;
     private javax.swing.JButton comma;
     private javax.swing.JButton div;
     private javax.swing.JButton equals;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
+    private javax.swing.JButton left_bracket;
     private javax.swing.JButton minus;
     private javax.swing.JLabel monitor;
     private javax.swing.JButton multi;
@@ -468,5 +471,6 @@ public class calc_frame extends javax.swing.JFrame {
     private javax.swing.JButton num8;
     private javax.swing.JButton num9;
     private javax.swing.JButton percent;
+    private javax.swing.JButton right_bracket;
     // End of variables declaration//GEN-END:variables
 }
